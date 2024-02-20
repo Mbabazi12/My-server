@@ -5,10 +5,10 @@ import Controller from '../controllers/controllers';
 
 const router: Router = express.Router();
 
-router.get('/users', Controller.getUsers);
-router.get('/users/:id', Controller.getUser);
-router.post('/users', Controller.createUser);
-router.put('/users/:id', Controller.updateUser);
-router.delete('/users/:id', Controller.deleteUser);
+router.get('/', Controller.getUsers);
+router.get('/:id', Controller.getUser);
+router.post('/', Controller.createUser);
+router.put('/:id', Controller.updateUser);
+router.delete('/:id', Controller.deleteUser);
 
 export default router;

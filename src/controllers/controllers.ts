@@ -11,7 +11,8 @@ export function getUser(req: Request, res: Response): void {
 }
 
 export function createUser(req: Request, res: Response): void {
-    res.json({ message: 'Create a new user' });
+    const user = 
+    res.json({ message: 'Create a new user', });
 }
 
 export function updateUser(req: Request, res: Response): void {

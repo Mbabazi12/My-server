@@ -3,7 +3,6 @@ import mongoose, {Document, Schema} from 'mongoose';
 export interface MyPortifolio extends Document{
     name: string;
     Age: number;
-    Location: string;
     phoneNumber: number;
     email: string;
 }
@@ -11,7 +10,6 @@ export interface MyPortifolio extends Document{
 const portifolioSchema: Schema = new Schema({
     name: { type: String, required: true},
     Age: {type: Number},
-    location: {type: String},
     phoneNumber: { type: Number},
     email: {type: String, required: true}
 },{ timestamps: true });
