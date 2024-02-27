@@ -2,25 +2,34 @@ import { Request, Response } from 'express';
 import { User } from '../model/user';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { loginMessage } from '../utils/loginMessage';
 
 class controllers{
-    public static async  createUser(req:Request, res:Response):Promise<void>{
-        const user = await User.create(req.body)
-        if (user){
-            return successMessage(res, 200, 'user created', user)
+    public static async createUser(req: Request, res: Response): Promise<void> {
+        const { username, email, password, role } = req.body;
+        if (!password) {
+            return errorMessage(res, 400, 'Password is required');
         }
-        else{
-            return errorMessage(res, 201, 'user not created')
+    
+        const hashPassword = bcrypt.hashSync(password, 10);
+        const user = await User.create({ username, email, password: hashPassword, role });
+        if (user) {
+            return successMessage(res, 200, 'User created', user);
+        } else {
+            return errorMessage(res, 500, 'Failed to create user');
         }
     }
+    
 
-    public static async  getAllUser(req:Request, res:Response):Promise<void>{
+    public static async  getAllUsers(req:Request, res:Response):Promise<void>{
         const user = await User.find()
         if (user){
             return successMessage(res, 200, `all users found ${user.length}`, user)
         }
         else{
-            return errorMessage(res, 201, 'users not found')
+            return errorMessage(res, 401, 'users not found')
         }
     }
 
@@ -31,7 +40,7 @@ class controllers{
             return successMessage(res, 200, 'user found', user)
         }
         else{
-            return errorMessage(res, 201, 'user not found')
+            return errorMessage(res, 401, 'user not found')
         }
     }
 
@@ -42,7 +51,7 @@ class controllers{
             return successMessage(res, 200, 'user updated', user)
         }
         else{
-            return errorMessage(res, 201, 'user not updated')
+            return errorMessage(res, 401, 'user not updated')
         }
     }
 
@@ -53,17 +62,47 @@ class controllers{
             return successMessage(res, 200, 'user deleted successfully', user)
         }
         else{
-            return errorMessage(res, 201, 'user not deleted')
+            return errorMessage(res, 401, 'user not deleted')
         }
     }
 
     public static async  deleteAllUser(req:Request, res:Response):Promise<void>{
         const user = await User.deleteMany()
         if (user){
-            return errorMessage(res, 200, 'all users deleted')
+            return errorMessage(res, 401, 'all users deleted')
         }
         else{
-            return errorMessage(res, 201, 'users not deleted')
+            return errorMessage(res, 401, 'users not deleted')
+        }
+    }
+
+    public static async login(req: Request, res: Response): Promise<void> {
+        const { email, password } = req.body;
+        const secretKey = 'mbabazi';
+        try {
+            if(!secretKey){
+                return errorMessage(res, 500, 'secret key not defined')
+            }
+            const user = await User.findOne({email});
+            if(!user){
+                return errorMessage(res, 500, 'Invalid email or password')
+            }else{
+                const comparePassword = bcrypt.compareSync(password, user.password)
+                if(!comparePassword){
+                    return errorMessage(res, 401, 'invalid email or password');
+                }else{
+                    const token = jwt.sign({user: user}, secretKey, {expiresIn: '1d'})
+                    if(token){
+                        return loginMessage(res, 201, 'token found', user, token)
+                    }else{
+                        return errorMessage(res, 401, 'token not found');
+                    }
+                }
+            }
+        } catch (error) {
+            console.log(error);
+            return errorMessage(res, 500, 'internal server error');
+            
         }
     }
 }
