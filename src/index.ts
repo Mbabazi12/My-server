@@ -5,6 +5,8 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import swaggerOutPut from './documentation/swagger_output.json';
 
 
 const app = express();
@@ -16,10 +18,11 @@ app.use(cors({
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutPut));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.use(express.json());
-app.use('/',router);
+app.use('/API/v1',router);
 // dbConnect();
 async function server() {
     app.listen(port, () => {
@@ -34,6 +37,6 @@ async function server() {
         })
     
     }
-server()
+server();
 
 

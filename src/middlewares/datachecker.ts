@@ -1,5 +1,5 @@
 import express, {Request,Response, NextFunction } from "express";
-import { User } from "../model/user";
+import {User} from "../model/user";
 import { errorMessage } from "../utils/errorMessage";
 class dataChecker{
     public static async inputIsEmpty(req:Request, res:Response,next : NextFunction) :Promise<void> {
@@ -17,14 +17,14 @@ class dataChecker{
     }
     }
 
-public static async EmailExist(req:Request,res:Response,next:NextFunction):Promise<void>{
-    const {email}=req.body
-    const user = await User.findOne({email})
-    if(user){
-        return errorMessage(res,500,`email exist`)
-    }else {
-        next()
-    }
-}
+    public static async EmailExist(req: Request, res: Response, next: NextFunction): Promise<void> {
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+        if (user) {
+            return errorMessage(res, 400, `Email already exists`);
+        } else {
+            next();
+        }
+    }    
 }
 export { dataChecker }

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.87% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/32</span>
+                <span class='fraction'>4/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.87% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/32</span>
+                <span class='fraction'>4/32</span>
             </div>
         
             
@@ -135,7 +135,8 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,17 +154,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -199,9 +189,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,7 +214,7 @@ import { Blog } from '../model/blogs';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
 &nbsp;
-class controllers{
+class blogController{
     public <span class="fstat-no" title="function not covered" >static </span>async  createBlog(req:Request, res:Response):Promise&lt;void&gt;{
         const {blogTitle, blogDescription, blogImage} = <span class="cstat-no" title="statement not covered" >req.body;</span>
         const blog = <span class="cstat-no" title="statement not covered" >await Blog.create({blogTitle, blogDescription, blogImage})</span>
@@ -224,12 +226,12 @@ class controllers{
         }
     }
 &nbsp;
-    public static async  getAllBlogs(req:Request, res:Response):Promise&lt;void&gt;{
-        const blog = await Blog.find()
-        if (blog){
-            return successMessage(res, 200, `all Blogs found ${blog.length}`,blog)
+    public <span class="fstat-no" title="function not covered" >static </span>async  getAllBlogs(req:Request, res:Response):Promise&lt;void&gt;{
+        const blog = <span class="cstat-no" title="statement not covered" >await Blog.find()</span>
+<span class="cstat-no" title="statement not covered" >        if (blog){</span>
+<span class="cstat-no" title="statement not covered" >            return successMessage(res, 200, `all Blogs found ${blog.length}`,blog)</span>
         }
-        else<span class="missing-if-branch" title="else path not taken" >E</span>{
+        else{
 <span class="cstat-no" title="statement not covered" >            return errorMessage(res, 401, 'Blogs not found')</span>
         }
     }
@@ -278,7 +280,8 @@ class controllers{
     }
 }
 &nbsp;
-export default controllers;
+&nbsp;
+export default blogController;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -286,7 +289,7 @@ export default controllers;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-27T18:35:10.412Z
+                at 2024-03-01T00:22:23.912Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

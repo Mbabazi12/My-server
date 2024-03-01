@@ -1,15 +1,15 @@
 import express, { Router } from 'express';
-import controllers from '../controllers/blogsControllers';
+import blogController from '../controllers/blogsControllers';
 import middleware from '../middlewares/blogsMiddlewares';
 import VerifyAccess from '../middlewares/verifyAccess';
 
 const router: Router = express.Router();
 
-router.post('/', middleware, VerifyAccess, controllers.createBlog);
-router.get('/:id', controllers.getBlog);
-router.get('/', controllers.getAllBlogs);
-router.delete('/:id', VerifyAccess, controllers.deleteBlog);
-router.delete('/', VerifyAccess, controllers.deleteAllBlogs);
-router.patch('/:id', VerifyAccess, controllers.updateBlog);
+router.post('/create', middleware, VerifyAccess, blogController.createBlog);
+router.get('/:id', blogController.getBlog);
+router.get('/get', blogController.getAllBlogs);
+router.delete('/:id', VerifyAccess, blogController.deleteBlog);
+router.delete('/delete', VerifyAccess, blogController.deleteAllBlogs);
+router.patch('/:id', VerifyAccess, blogController.updateBlog);
 
 export default router;

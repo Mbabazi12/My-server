@@ -1,16 +1,16 @@
 import express, {Router} from 'express';
-import controllers from '../controllers/userControllers';
+import userControllers from '../controllers/userControllers';
 import { dataChecker } from '../middlewares/datachecker';
 
 const router : Router = express.Router()
 
-router.post('/', dataChecker.inputIsEmpty, dataChecker.EmailExist, controllers.createUser);
-router.post('/login', controllers.login);
-router.get('/', controllers.getAllUsers);
-router.get('/:id', controllers.getUser);
-router.delete('/:id', controllers.deleteUser);
-router.delete('/', controllers.deleteAllUser);
-router.patch('/:id', controllers.updateUser);
+router.post('/create', dataChecker.inputIsEmpty, dataChecker.EmailExist, userControllers.createUser);
+router.post('/login', userControllers.login);
+router.get('/get', userControllers.getAllUsers);
+router.get('/:id', userControllers.getUser);
+router.delete('/:id', userControllers.deleteUser);
+router.delete('/delete', userControllers.deleteAllUser);
+router.patch('/:id', userControllers.updateUser);
 
 export default router;
 

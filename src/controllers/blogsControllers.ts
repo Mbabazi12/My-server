@@ -3,7 +3,7 @@ import { Blog } from '../model/blogs';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
 
-class controllers{
+class blogController{
     public static async  createBlog(req:Request, res:Response):Promise<void>{
         const {blogTitle, blogDescription, blogImage} = req.body;
         const blog = await Blog.create({blogTitle, blogDescription, blogImage})
@@ -70,4 +70,4 @@ class controllers{
 }
 
 
-export default controllers;
+export default blogController;

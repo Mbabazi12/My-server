@@ -3,9 +3,9 @@ import commentController from '../controllers/commentController';
 
 
 const router:Router = express.Router()
-router.post("/",commentController.addComment)
-router.get("/",commentController.Comments)
-router.get("/",commentController.deleteComment)
+router.post("/addComment",commentController.addComment)
+router.get("/getComment",commentController.Comments)
+router.delete("/delete",commentController.deleteComment)
 
 
 export default router

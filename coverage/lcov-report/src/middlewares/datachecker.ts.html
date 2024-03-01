@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">18.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/16</span>
+                <span class='fraction'>3/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">18.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/16</span>
+                <span class='fraction'>3/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,56 +97,56 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express, {Request,Response, NextFunction } from "express";
-import { User } from "../model/user";
+import {User} from "../model/user";
 import { errorMessage } from "../utils/errorMessage";
 class dataChecker{
-    public static async inputIsEmpty(req:Request, res:Response,next : NextFunction) :Promise&lt;void&gt; {
-    const {username,email,passWord} = req.body
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(username ==""){
+    public <span class="fstat-no" title="function not covered" >static </span>async inputIsEmpty(req:Request, res:Response,next : NextFunction) :Promise&lt;void&gt; {
+    const {username,email,passWord} = <span class="cstat-no" title="statement not covered" >req.body</span>
+<span class="cstat-no" title="statement not covered" >    if(username ==""){</span>
 <span class="cstat-no" title="statement not covered" >        return errorMessage(res,401,`username is empty please fill in something`)</span>
-    }else <span class="missing-if-branch" title="if path not taken" >I</span>if(email == ""){
+    }else <span class="cstat-no" title="statement not covered" >if(email == ""){</span>
 <span class="cstat-no" title="statement not covered" >        return errorMessage(res,401,`email is empty please fill in the email`)</span>
     }
-    else <span class="missing-if-branch" title="if path not taken" >I</span>if(passWord == ""){
+    else <span class="cstat-no" title="statement not covered" >if(passWord == ""){</span>
 <span class="cstat-no" title="statement not covered" >        return errorMessage(res,401,`password is empty please fill`)</span>
     }
     else{
-        next()
+<span class="cstat-no" title="statement not covered" >        next()</span>
     }
     }
 &nbsp;
-public static async EmailExist(req:Request,res:Response,next:NextFunction):Promise&lt;void&gt;{
-    const {email}=req.body
-    const user = await User.findOne({email})
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(user){
+public <span class="fstat-no" title="function not covered" >static </span>async EmailExist(req:Request,res:Response,next:NextFunction):Promise&lt;void&gt;{
+    const {email}=<span class="cstat-no" title="statement not covered" >req.body</span>
+    const user = <span class="cstat-no" title="statement not covered" >await User.findOne({email})</span>
+<span class="cstat-no" title="statement not covered" >    if(user){</span>
 <span class="cstat-no" title="statement not covered" >        return errorMessage(res,500,`email exist`)</span>
     }else {
-        next()
+<span class="cstat-no" title="statement not covered" >        next()</span>
     }
 }
 }
@@ -157,7 +157,7 @@ export { dataChecker }</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-27T18:35:10.412Z
+                at 2024-02-29T18:29:18.489Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
