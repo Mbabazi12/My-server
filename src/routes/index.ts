@@ -1,13 +1,34 @@
 import express, {Router} from 'express';
 import userRoutes from './userRoutes';
 import blogsRoutes from './blogsRoutes';
-import commentsRoutes from './commentsRoutes'
+import commentsRoutes from './commentsRoutes';
+import contactRoutes from './contactRoutes'
 
 const router:Router = express.Router()
 
-router.use('/user', userRoutes);
-router.use('/blog', blogsRoutes);
-router.use('/comment', commentsRoutes);
+router.use('/user', 
+/*
+#swagger.tags = ['USERS Routes']
+*/
+userRoutes);
+
+router.use('/blog',
+/*
+#swagger.tags = ['BLOGS Routes']
+*/
+ blogsRoutes);
+
+router.use('/comment',
+/*
+#swagger.tags = ['COMMENTS Routes']
+*/
+commentsRoutes);
+
+router.use('/contact',
+/*
+#swagger.tags = ['MEASSAGE Routes']
+*/
+contactRoutes);
 
 export default router;
 // import authentication from './authentication';

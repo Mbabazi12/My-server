@@ -67,6 +67,36 @@ class blogController{
             return errorMessage(res, 401, 'Blogs not deleted')
         }
     }
+    public static async likeBlog(req: Request, res: Response): Promise<void> {
+        try {
+            const blog = await Blog.findById(req?.params?.id);
+            if (!blog) {
+               return errorMessage(res,201,`blogs not found`)
+            }
+            blog.Likes++;
+            await blog.save();
+          return successMessage(res,200,`blogs liked`,blog)
+        } catch (error) {
+            console.log('error from liked')
+        }
+    }
+    public static async dislikeBlog(req: Request, res: Response): Promise<void> {
+        try {
+            const blog = await Blog.findById(req?.params?.id);
+            if (!blog) {
+                return errorMessage(res, 201, `blogs not liked`);
+            } else {
+                blog.Likes = (blog.Likes || 0) - 1;
+            }
+            if (blog.Likes < 0) {
+                blog.Likes = 0;
+            }
+            await blog.save();
+            return successMessage(res, 200, `blogs unliked successfully`, blog);
+        } catch (error) {
+            console.log('error from likes', error);
+        }
+    }
 }
 
 

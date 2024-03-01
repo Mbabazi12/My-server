@@ -4,6 +4,12 @@ import mongoose from "mongoose";
 
 beforeAll(async () => {
     mongoose.connect("mongodb://localhost:27017/my_brand")
+    .then(() => {
+        console.log("the database connection was successful");
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
 });
 
 afterAll(async () => {
@@ -23,7 +29,7 @@ it("Should create a user and return success", async () => {
        .post("/create")
        .send({
         username:"diane",
-        email: "diane@gmailcom",
+        email: "diane@gmail.com",
         password:"diane",
         role:"user",
        })
@@ -33,11 +39,20 @@ it("Should create a user and return success", async () => {
            const res = await request(app)
            .post("/login")
            .send({
-            email:"diane@gmail.com",
-            password:"diane",
+            email:"mbabazi@gmail.com",
+            password:"mbabazi"
            })
-           expect(res.status).toEqual(400);
+           expect(res.status).toEqual(401);
     });
+    it("Should return that the user successfully logged in", async () => {
+        const res = await request(app)
+        .post("/login")
+        .send({
+         email:"diane@gmail.com",
+         password:"diane"
+        })
+        expect(res.status).toEqual(200);
+ });
     it("Should return that the user found", async () => {
            const res = await request(app)
            .get("/")

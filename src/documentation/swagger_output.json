@@ -14,6 +14,9 @@
   "paths": {
     "/API/v1/user/create": {
       "post": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -50,6 +53,9 @@
     },
     "/API/v1/user/login": {
       "post": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -77,6 +83,9 @@
     },
     "/API/v1/user/get": {
       "get": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -87,6 +96,9 @@
     },
     "/API/v1/user/{id}": {
       "get": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -105,6 +117,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -123,6 +138,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -143,6 +161,9 @@
     },
     "/API/v1/user/delete": {
       "delete": {
+        "tags": [
+          "USERS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -153,6 +174,9 @@
     },
     "/API/v1/blog/create": {
       "post": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -183,6 +207,9 @@
     },
     "/API/v1/blog/{id}": {
       "get": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -201,6 +228,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -219,6 +249,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -239,6 +272,9 @@
     },
     "/API/v1/blog/get": {
       "get": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -249,7 +285,56 @@
     },
     "/API/v1/blog/delete": {
       "delete": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/blog/like/{id}": {
+      "post": {
+        "tags": [
+          "BLOGS Routes"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/blog/unlike/{id}": {
+      "post": {
+        "tags": [
+          "BLOGS Routes"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -259,6 +344,9 @@
     },
     "/API/v1/blog/create/": {
       "post": {
+        "tags": [
+          "BLOGS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -289,6 +377,9 @@
     },
     "/API/v1/comment/addComment": {
       "post": {
+        "tags": [
+          "COMMENTS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -299,6 +390,9 @@
     },
     "/API/v1/comment/getComment": {
       "get": {
+        "tags": [
+          "COMMENTS Routes"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -309,6 +403,71 @@
     },
     "/API/v1/comment/delete": {
       "delete": {
+        "tags": [
+          "COMMENTS Routes"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/contact/addMessage": {
+      "post": {
+        "tags": [
+          "MEASSAGE Routes"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/contact/getMessages": {
+      "get": {
+        "tags": [
+          "MEASSAGE Routes"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/contact/{id}": {
+      "get": {
+        "tags": [
+          "MEASSAGE Routes"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/API/v1/contact/deleteAll": {
+      "get": {
+        "tags": [
+          "MEASSAGE Routes"
+        ],
         "description": "",
         "responses": {
           "default": {

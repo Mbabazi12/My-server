@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import blogsRoutes from "./routes/blogsRoutes";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";

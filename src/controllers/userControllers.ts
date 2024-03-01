@@ -77,15 +77,15 @@ class userController{
             }
             const user = await User.findOne({email});
             if(!user){
-                return errorMessage(res, 400, 'Invalid email or password');
+                return errorMessage(res, 401, 'Invalid email ');
             }else{
                 const comparePassword = bcrypt.compareSync(password, user.password);
                 if(!comparePassword){
-                    return errorMessage(res, 401, 'invalid email or password');
+                    return errorMessage(res, 402, 'invalid password');
                 }else{
                     const token = jwt.sign({user: user}, secretKey, {expiresIn: '1d'})
                     if(token){
-                        return loginMessage(res, 201, 'token found', user, token)
+                        return loginMessage(res, 201, 'user login successfully', token)
                     }else{
                         return errorMessage(res, 401, 'token not found');
                     }
