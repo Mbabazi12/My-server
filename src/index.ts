@@ -11,9 +11,7 @@ import swaggerOutPut from './documentation/swagger_output.json';
 
 const app = express();
 
-app.use(cors({
-    credentials: true,
-}));
+app.use(cors());
 
 app.use(compression());
 app.use(cookieParser());

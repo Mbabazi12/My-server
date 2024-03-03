@@ -13,14 +13,14 @@ public static async addmessage(req:Request,res:Response):Promise<void>{
 public static async getAllMessages(req:Request,res:Response):Promise<void>{
     const message = await Contact.find()
     if(message){
-        return successMessage(res,200,`messages found`,message)
+        return success(res,200,`messages found`,message)
     }
 }
 public static async deleteMessages(req:Request,res:Response):Promise<void>{
     const messageId = req.params.id
     const message = await Contact.findByIdAndDelete(messageId)
     if(message){
-        return success(res,201,`messages deleted`)
+        return success(res,201,`messages deleted`,message)
     }else{
         return errorMessage(res,401,`messages not deleted`)
     }
@@ -28,7 +28,7 @@ public static async deleteMessages(req:Request,res:Response):Promise<void>{
 public static async deleteAllMessages(req:Request,res:Response):Promise<void>{
     const message = await Contact.deleteMany()
     if(message){
-        return success(res,201,`messages deleted`)
+        return successMessage(res,201,`messages deleted`,message)
     }else{
         return errorMessage(res,401,`messages not deleted`)
     }

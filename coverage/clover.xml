@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709290125851" clover="3.2.0">
-  <project timestamp="1709290125851" name="All files">
-    <metrics statements="310" coveredstatements="210" conditionals="116" coveredconditionals="61" methods="65" coveredmethods="36" elements="491" coveredelements="307" complexity="0" loc="310" ncloc="310" packages="8" files="16" classes="16"/>
+<coverage generated="1709458705321" clover="3.2.0">
+  <project timestamp="1709458705321" name="All files">
+    <metrics statements="413" coveredstatements="256" conditionals="190" coveredconditionals="79" methods="90" coveredmethods="45" elements="693" coveredelements="380" complexity="0" loc="413" ncloc="413" packages="8" files="22" classes="22"/>
     <package name="dist">
-      <metrics statements="31" coveredstatements="31" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+      <metrics statements="33" coveredstatements="33" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
       <file name="server.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\server.js">
-        <metrics statements="31" coveredstatements="31" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <metrics statements="33" coveredstatements="33" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="3" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="3" count="8" type="cond" truecount="4" falsecount="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -18,31 +18,33 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
       </file>
     </package>
     <package name="dist.controllers">
-      <metrics statements="118" coveredstatements="61" conditionals="63" coveredconditionals="32" methods="41" coveredmethods="19"/>
+      <metrics statements="164" coveredstatements="77" conditionals="104" coveredconditionals="43" methods="58" coveredmethods="26"/>
       <file name="blogsControllers.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\controllers\blogsControllers.js">
-        <metrics statements="46" coveredstatements="6" conditionals="23" coveredconditionals="3" methods="19" coveredmethods="0"/>
+        <metrics statements="66" coveredstatements="6" conditionals="47" coveredconditionals="3" methods="23" coveredmethods="0"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
         <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -88,7 +90,56 @@
         <line num="78" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="79" count="0" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
-        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="108" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="112" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="114" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="126" count="1" type="stmt"/>
+      </file>
+      <file name="commentController.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\controllers\commentController.js">
+        <metrics statements="26" coveredstatements="16" conditionals="17" coveredconditionals="11" methods="13" coveredmethods="7"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="4" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
       </file>
       <file name="userControllers.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\controllers\userControllers.js">
         <metrics statements="72" coveredstatements="55" conditionals="40" coveredconditionals="29" methods="22" coveredmethods="19"/>
@@ -167,7 +218,7 @@
       </file>
     </package>
     <package name="dist.model">
-      <metrics statements="15" coveredstatements="15" conditionals="14" coveredconditionals="12" methods="2" coveredmethods="2"/>
+      <metrics statements="23" coveredstatements="23" conditionals="21" coveredconditionals="18" methods="3" coveredmethods="3"/>
       <file name="blogs.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\model\blogs.js">
         <metrics statements="8" coveredstatements="8" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
@@ -178,6 +229,17 @@
         <line num="8" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="comments.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\model\comments.js">
+        <metrics statements="8" coveredstatements="8" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
       <file name="user.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\model\user.js">
         <metrics statements="7" coveredstatements="7" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
@@ -191,7 +253,7 @@
       </file>
     </package>
     <package name="dist.utils">
-      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="20" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="errorMessage.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\utils\errorMessage.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
@@ -213,14 +275,22 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="sucess.js" path="C:\Users\user\Desktop\andela projects\express-ts\dist\utils\sucess.js">
+        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src">
-      <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="30" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="server.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\server.ts">
-        <metrics statements="28" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="30" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -228,33 +298,35 @@
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="87" coveredstatements="44" conditionals="32" coveredconditionals="10" methods="13" coveredmethods="6"/>
+      <metrics statements="120" coveredstatements="52" conditionals="58" coveredconditionals="11" methods="18" coveredmethods="7"/>
       <file name="blogsControllers.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\controllers\blogsControllers.ts">
-        <metrics statements="32" coveredstatements="4" conditionals="12" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="50" coveredstatements="4" conditionals="34" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -286,7 +358,43 @@
         <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="64" count="0" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+      </file>
+      <file name="commentController.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\controllers\commentController.ts">
+        <metrics statements="15" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
       </file>
       <file name="userControllers.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\controllers\userControllers.ts">
         <metrics statements="55" coveredstatements="40" conditionals="20" coveredconditionals="10" methods="7" coveredmethods="6"/>
@@ -348,13 +456,20 @@
       </file>
     </package>
     <package name="src.model">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="blogs.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\model\blogs.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="comments.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\model\comments.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
       </file>
       <file name="user.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\model\user.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -364,7 +479,7 @@
       </file>
     </package>
     <package name="src.utils">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="errorMessage.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\utils\errorMessage.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
@@ -380,7 +495,13 @@
       <file name="successMessage.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\utils\successMessage.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="sucess.ts" path="C:\Users\user\Desktop\andela projects\express-ts\src\utils\sucess.ts">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
       </file>
     </package>

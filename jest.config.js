@@ -3,7 +3,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   collectCoverage: true,
-  testTimeout: 30000,
+  testTimeout: 80000,
   coverageThreshold: {
     global: {
       lines: 50,

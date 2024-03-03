@@ -43,6 +43,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@appnest/readme": "^1.2.7",
     "@jest/globals": "^29.7.0",
     "@types/body-parser": "^1.19.5",
     "@types/compression": "^1.7.5",
@@ -59,4 +60,5 @@
     "ts-jest": "^29.1.2"
   },
   "description": ""
-}
+  }
+

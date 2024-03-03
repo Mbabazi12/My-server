@@ -30,8 +30,7 @@ it("Should create a user and return success", async () => {
        .send({
         username:"diane",
         email: "diane@gmail.com",
-        password:"diane",
-        role:"user",
+        password:"diane"
        })
        expect(res.status).toEqual(200);  
      });
@@ -51,7 +50,7 @@ it("Should create a user and return success", async () => {
          email:"diane@gmail.com",
          password:"diane"
         })
-        expect(res.status).toEqual(200);
+        expect(res.status).toEqual(201);
  });
     it("Should return that the user found", async () => {
            const res = await request(app)
@@ -79,6 +78,7 @@ it("Should create a user and return success", async () => {
           expect(res.status).toEqual(401);
 });
 });
+
 describe("blog testing", () =>{
   it("Should create a blog and return success", async () => {
          const res = await request(app)
@@ -115,4 +115,17 @@ describe("blog testing", () =>{
             .patch("/")
             expect(res.status).toEqual(401);
   });
-  });
+});
+
+describe("comment testing", () =>{
+    it("Should create the comment and return success", async () => {
+        const res = await request(app)
+        .post("/addComment")
+        .send({
+          user:"65de323437bec203f980f4e4",
+          blog:"65de323437bec203f980f4e4",
+          comment:"thousand hills"
+        })
+        expect(res.status).toEqual(200);
+    });
+});

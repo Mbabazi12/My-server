@@ -13,13 +13,13 @@ public static async addComment(req:Request,res:Response):Promise<void>{
 public static async Comments(req:Request,res:Response):Promise<void>{
     const comment = await Comment.find()
     if(comment){
-        return successMessage(res,200,`comments found`,comment)
+        return success(res,200,`comments found`,comment)
     }
 }
 public static async deleteComment(req:Request,res:Response):Promise<void>{
     const comment = await Comment.deleteMany()
     if(comment){
-        return success(res,201,`comment deleted`)
+        return success(res,201,`comment deleted`, comment)
     }else{
         return errorMessage(res,401,`comment not deleted`)
     }

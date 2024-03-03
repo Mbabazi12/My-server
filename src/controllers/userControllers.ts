@@ -83,7 +83,7 @@ class userController{
                 if(!comparePassword){
                     return errorMessage(res, 402, 'invalid password');
                 }else{
-                    const token = jwt.sign({user: user}, secretKey, {expiresIn: '1d'})
+                    const token = jwt.sign({user: user}, secretKey, {expiresIn: '300d'})
                     if(token){
                         return loginMessage(res, 201, 'user login successfully', token)
                     }else{

@@ -6,8 +6,8 @@ import VerifyAccess from '../middlewares/verifyAccess';
 const router: Router = express.Router();
 
 router.post('/create', middleware, VerifyAccess, blogController.createBlog);
-router.get('/:id', blogController.getBlog);
 router.get('/get', blogController.getAllBlogs);
+router.get('/:id', blogController.getBlog);
 router.delete('/:id', VerifyAccess("admin"), blogController.deleteBlog);
 router.delete('/delete', VerifyAccess("admin"), blogController.deleteAllBlogs);
 router.patch('/:id', VerifyAccess("admin"), blogController.updateBlog);
