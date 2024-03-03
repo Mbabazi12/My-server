@@ -5,5 +5,5 @@ const commentSchema = new mongoose.Schema({
     comment : {type:String, required : true},
     postedAt : {type:Date,default:Date.now()},
 })
-const Comment = mongoose.model('Comment',commentSchema)
-export { Comment }
+const Comment = mongoose.model('Comment',commentSchema);
+export { Comment };

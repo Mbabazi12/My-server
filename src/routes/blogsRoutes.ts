@@ -11,7 +11,7 @@ router.get('/:id', blogController.getBlog);
 router.delete('/:id', VerifyAccess("admin"), blogController.deleteBlog);
 router.delete('/delete', VerifyAccess("admin"), blogController.deleteAllBlogs);
 router.patch('/:id', VerifyAccess("admin"), blogController.updateBlog);
-router.post("/like/:id",blogController.likeBlog)
-router.post("/unlike/:id",blogController.dislikeBlog)
+router.post("/like/:id",blogController.likeBlog);
+router.post("/unlike/:id",blogController.dislikeBlog);
 
 export default router;

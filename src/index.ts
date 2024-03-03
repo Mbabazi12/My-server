@@ -10,8 +10,11 @@ import swaggerOutPut from './documentation/swagger_output.json';
 
 
 const app = express();
-
-app.use(cors());
+const corsOptions = {
+    origin: 'http://127.0.0.1:5500/signup.html#',
+    optionsSuccessStatus: 200 
+  };
+app.use(cors(corsOptions));
 
 app.use(compression());
 app.use(cookieParser());
@@ -29,12 +32,12 @@ async function server() {
     // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/my_brand'
     const brand = 'mongodb://localhost:27017/my_brand'
         await mongoose.connect(brand).then(()=>{
-            console.log('database connected successfully')
+            console.log('database connected successfully');
         }).catch((error)=>{
-            console.log(`database connection failed${error}`)
-        })
+            console.log(`database connection failed${error}`);
+        });
     
-    }
+    };
 server();
 
 

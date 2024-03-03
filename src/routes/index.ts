@@ -2,7 +2,7 @@ import express, {Router} from 'express';
 import userRoutes from './userRoutes';
 import blogsRoutes from './blogsRoutes';
 import commentsRoutes from './commentsRoutes';
-import contactRoutes from './contactRoutes'
+import contactRoutes from './contactRoutes';
 
 const router:Router = express.Router()
 
