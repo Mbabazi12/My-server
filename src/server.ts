@@ -35,4 +35,6 @@ app.delete('/delete', blogController.deleteAllBlogs);
 app.patch('/', blogController.updateBlog);
 // comments endpoints
 app.post('/addComment', commentController.addComment);
+app.get('/getComment', commentController.Comments);
+app.delete('/delete', commentController.deleteComment);
 export default app;

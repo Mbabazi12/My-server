@@ -29,7 +29,8 @@ async function server() {
     app.listen(port, () => {
         console.log(`Server listening on port ${port}`);
     });
-    // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/my_brand'
+
+    // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/my_portifolio?retryWrites=true&w=majority'
     const brand = 'mongodb://localhost:27017/my_brand'
         await mongoose.connect(brand).then(()=>{
             console.log('database connected successfully');
@@ -38,6 +39,29 @@ async function server() {
         });
     
     };
+    
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const brand = "mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/?retryWrites=true&w=majority&appName=mbabazi";
+
+// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// const client = new MongoClient(brand, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
+
+// async function run() {
+//   try {
+//     await client.connect();
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//     console.log(Error)
+//   } finally {
+//     await client.close();
+//   }
+// }
+// run().catch(console.dir);
+// }
 server();
-
-

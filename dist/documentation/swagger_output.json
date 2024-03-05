@@ -205,6 +205,19 @@
                 }
             }
         },
+        "/API/v1/blog/get": {
+            "get": {
+                "tags": [
+                    "BLOGS Routes"
+                ],
+                "description": "",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/API/v1/blog/{id}": {
             "get": {
                 "tags": [
@@ -263,19 +276,6 @@
                         }
                     }
                 ],
-                "responses": {
-                    "default": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/API/v1/blog/get": {
-            "get": {
-                "tags": [
-                    "BLOGS Routes"
-                ],
-                "description": "",
                 "responses": {
                     "default": {
                         "description": ""
@@ -417,7 +417,7 @@
         "/API/v1/contact/addMessage": {
             "post": {
                 "tags": [
-                    "MEASSAGE Routes"
+                    "MESSAGES Routes"
                 ],
                 "description": "",
                 "responses": {
@@ -430,7 +430,7 @@
         "/API/v1/contact/getMessages": {
             "get": {
                 "tags": [
-                    "MEASSAGE Routes"
+                    "MESSAGES Routes"
                 ],
                 "description": "",
                 "responses": {
@@ -443,7 +443,7 @@
         "/API/v1/contact/{id}": {
             "get": {
                 "tags": [
-                    "MEASSAGE Routes"
+                    "MESSAGES Routes"
                 ],
                 "description": "",
                 "parameters": [
@@ -466,7 +466,7 @@
         "/API/v1/contact/deleteAll": {
             "get": {
                 "tags": [
-                    "MEASSAGE Routes"
+                    "MESSAGES Routes"
                 ],
                 "description": "",
                 "responses": {

@@ -26,9 +26,10 @@ commentsRoutes);
 
 router.use('/contact',
 /*
-#swagger.tags = ['MEASSAGE Routes']
+#swagger.tags = ['MESSAGES Routes']
 */
 contactRoutes);
+
 
 export default router;
 // import authentication from './authentication';

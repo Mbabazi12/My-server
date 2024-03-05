@@ -16,6 +16,15 @@ public static async Comments(req:Request,res:Response):Promise<void>{
         return success(res,200,`comments found`,comment)
     }
 }
+public static async deleteMessages(req:Request,res:Response):Promise<void>{
+    const messageId = req.params.id
+    const comment = await Comment.findByIdAndDelete(messageId)
+    if(comment){
+        return success(res,201,`messages deleted`,comment)
+    }else{
+        return errorMessage(res,401,`messages not deleted`)
+    }
+}
 public static async deleteComment(req:Request,res:Response):Promise<void>{
     const comment = await Comment.deleteMany()
     if(comment){

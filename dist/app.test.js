@@ -44,7 +44,7 @@ describe("user testing", () => {
         });
         expect(res.status).toEqual(200);
     }));
-    it("Should return that the user successfully logged in", () => __awaiter(void 0, void 0, void 0, function* () {
+    it("Should return that the user not logged in", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/login")
             .send({
@@ -109,7 +109,12 @@ describe("blog testing", () => {
             .get("/get");
         expect(res.status).toEqual(200);
     }));
-    it("Should return that the user deleted", () => __awaiter(void 0, void 0, void 0, function* () {
+    it("Should return that all blogs found", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/gete");
+        expect(res.status).toEqual(404);
+    }));
+    it("Should return that the blog is deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/");
         expect(res.status).toEqual(401);
@@ -135,5 +140,15 @@ describe("comment testing", () => {
             comment: "thousand hills"
         });
         expect(res.status).toEqual(200);
+    }));
+    it("Should return that all comments found", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/getComment");
+        expect(res.status).toEqual(200);
+    }));
+    it("Should return that all comments deleted", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .delete("/delete");
+        expect(res.status).toEqual(401);
     }));
 });

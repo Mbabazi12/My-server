@@ -34,7 +34,7 @@ it("Should create a user and return success", async () => {
        })
        expect(res.status).toEqual(200);  
      });
-    it("Should return that the user successfully logged in", async () => {
+    it("Should return that the user not logged in", async () => {
            const res = await request(app)
            .post("/login")
            .send({
@@ -67,10 +67,10 @@ it("Should create a user and return success", async () => {
           .delete("/")
           expect(res.status).toEqual(401);
 });
-    it("Should return that all users deleted", async () => {
-          const res = await request(app)
-          .delete("/delete")
-          expect(res.status).toEqual(401);
+it("Should return that all users deleted", async () => {
+      const res = await request(app)
+      .delete("/delete")
+      expect(res.status).toEqual(401);
 });
     it("Should return that the user updated successfully", async () => {
           const res = await request(app)
@@ -100,7 +100,12 @@ describe("blog testing", () =>{
             .get("/get")
             expect(res.status).toEqual(200);
   });
-      it("Should return that the user deleted", async () => {
+  it("Should return that all blogs found", async () => {
+        const res = await request(app)
+        .get("/gete")
+        expect(res.status).toEqual(404);
+});
+      it("Should return that the blog is deleted", async () => {
             const res = await request(app)
             .delete("/")
             expect(res.status).toEqual(401);
@@ -128,4 +133,14 @@ describe("comment testing", () =>{
         })
         expect(res.status).toEqual(200);
     });
+    it("Should return that all comments found", async () => {
+      const res = await request(app)
+      .get("/getComment")
+      expect(res.status).toEqual(200);
+});
+it("Should return that all comments deleted", async () => {
+  const res = await request(app)
+  .delete("/delete")
+  expect(res.status).toEqual(401);
+});
 });

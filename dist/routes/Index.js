@@ -26,7 +26,7 @@ router.use('/comment',
 commentsRoutes_1.default);
 router.use('/contact', 
 /*
-#swagger.tags = ['MEASSAGE Routes']
+#swagger.tags = ['MESSAGES Routes']
 */
 contactRoutes_1.default);
 exports.default = router;
