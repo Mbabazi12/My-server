@@ -10,11 +10,7 @@ import swaggerOutPut from './documentation/swagger_output.json';
 
 
 const app = express();
-const corsOptions = {
-    origin: 'http://127.0.0.1:5500/signup.html#',
-    optionsSuccessStatus: 200 
-  };
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(compression());
 app.use(cookieParser());
