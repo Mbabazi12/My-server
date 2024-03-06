@@ -22,11 +22,7 @@ const cors_1 = __importDefault(require("cors"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_output_json_1 = __importDefault(require("./documentation/swagger_output.json"));
 const app = (0, express_1.default)();
-const corsOptions = {
-    origin: 'http://127.0.0.1:5500/signup.html#',
-    optionsSuccessStatus: 200
-};
-app.use((0, cors_1.default)(corsOptions));
+app.use((0, cors_1.default)());
 app.use((0, compression_1.default)());
 app.use((0, cookie_parser_1.default)());
 app.use(body_parser_1.default.json());
@@ -40,7 +36,7 @@ function server() {
         app.listen(port, () => {
             console.log(`Server listening on port ${port}`);
         });
-        // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/my_portifolio?retryWrites=true&w=majority'
+        // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/?retryWrites=true&w=majority&appName=mbabazi'
         const brand = 'mongodb://localhost:27017/my_brand';
         yield mongoose_1.default.connect(brand).then(() => {
             console.log('database connected successfully');
@@ -50,26 +46,4 @@ function server() {
     });
 }
 ;
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const brand = "mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/?retryWrites=true&w=majority&appName=mbabazi";
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(brand, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// async function run() {
-//   try {
-//     await client.connect();
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//     console.log(Error)
-//   } finally {
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
-// }
 server();

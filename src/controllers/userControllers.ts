@@ -80,8 +80,8 @@ class userController{
                 return errorMessage(res, 401, 'Invalid email ');
             }else{
                 const comparePassword = bcrypt.compareSync(password, user.password);
-                if(!comparePassword){
-                    return errorMessage(res, 402, 'invalid password');
+                if(comparePassword){
+                    return successMessage(res, 402, 'invalid password', user);
                 }else{
                     const token = jwt.sign({user: user}, secretKey, {expiresIn: '300d'})
                     if(token){

@@ -117,8 +117,8 @@ class userController {
                 }
                 else {
                     const comparePassword = bcrypt_1.default.compareSync(password, user.password);
-                    if (!comparePassword) {
-                        return (0, errorMessage_1.errorMessage)(res, 402, 'invalid password');
+                    if (comparePassword) {
+                        return (0, successMessage_1.successMessage)(res, 402, 'invalid password', user);
                     }
                     else {
                         const token = jsonwebtoken_1.default.sign({ user: user }, secretKey, { expiresIn: '300d' });
