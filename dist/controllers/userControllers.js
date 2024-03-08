@@ -22,11 +22,17 @@ class userController {
     static signup(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { firstname, lastname, username, email, password, role } = req.body;
-                const userData = yield (0, validation_1.validateUser)({ firstname, lastname, username, email, password, role });
+                const { username, email, password, role } = req.body;
+                const userData = yield (0, validation_1.validateUser)({ username, email, password, role });
                 if ('validationErrors' in userData) {
                     const { validationErrors } = userData;
                     return res.status(400).json({ status: 'fail', validationErrors });
+                }
+                const userName = yield user_1.User.findOne({ username });
+                return res.status(401).json({ status: 'failed', message: 'username already exist' });
+                return res.status(201).json({ status: 'Success', data: userName });
+                if (!userName) {
+                    return res.status(201).json({ status: 'Success', data: userName });
                 }
                 const user = yield user_1.User.create(userData);
                 return res.status(201).json({ status: 'Success', data: user });

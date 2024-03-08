@@ -10,16 +10,19 @@ import { validateUser,validateupdatedUser } from '../middlewares/validation';
 class userController{
     public static async signup(req: Request, res: Response): Promise<Response> {
         try {
-          const { firstname, lastname, username, email, password,role} = req.body;
+          const { username, email, password,role} = req.body;
          
-          const userData = await validateUser({ firstname, lastname, username, email, password,role});
+          const userData = await validateUser({ username, email, password,role});
     
           if ('validationErrors' in userData) {
             const { validationErrors } = userData;
             return res.status(400).json({ status:'fail', validationErrors });
           }
           
-    
+          const userName = await User.findOne({ username });
+          if(userName){
+          return res.status(401).json({ status:'failed', message : 'username already exist'});
+        }
           const user: IUser = await User.create(userData);
     
           return res.status(201).json({ status:'Success', data: user });

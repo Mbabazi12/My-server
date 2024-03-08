@@ -10,21 +10,21 @@ import swaggerOutPut from './documentation/swagger_output.json';
 
 
 const app = express();
-const corsOpts = {
-    origin: '*',
-    methods: [
-    'GET',
-    'POST',
-    'DELETE',
-    'PATCH',
-    'PUT'
-    ],
-    allowedHeaders: [
-    'Content-Type',
-    'Authorization',
-    ],
-    };
-app.use(cors(corsOpts));
+// const corsOpts = {
+//     origin: '*',
+//     methods: [
+//     'GET',
+//     'POST',
+//     'DELETE',
+//     'PATCH',
+//     'PUT'
+//     ],
+//     allowedHeaders: [
+//     'Content-Type',
+//     'Authorization',
+//     ],
+//     };
+// app.use(cors(corsOpts));
 
 app.use(compression());
 app.use(cookieParser());
@@ -42,7 +42,6 @@ async function server() {
 
     mongoose.set('strictQuery', true);
    mongoose.connect("mongodb+srv://mbabazi069:mbabazi@cluster0.wnkbwfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-//    mongoose.connect("mongodb://localhost:27017/")
    .then(() => {
     console.log('connected to the database');
  }).catch((err) => {
