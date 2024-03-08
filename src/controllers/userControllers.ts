@@ -21,7 +21,7 @@ class userController{
           
           const userName = await User.findOne({ username });
           if(userName){
-          return res.status(401).json({ status:'failed', message : 'username already exist', userName});
+          return res.status(401).json({ status:'failed', error : 'username already exist', userName});
         }
           const user: IUser = await User.create(userData);
           return res.status(201).json({ status:'Success', data: user });

@@ -11,23 +11,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dataChecker = void 0;
 const user_1 = require("../model/user");
-const errorMessage_1 = require("../utils/errorMessage");
 class dataChecker {
     static inputIsEmpty(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const { username, email, passWord } = req.body;
             if (username == "") {
-                return (0, errorMessage_1.errorMessage)(res, 401, `username is empty please fill in something`);
+                return res.status(401).json({ status: 'failed', error: 'username required' });
             }
             else if (email == "") {
-                return (0, errorMessage_1.errorMessage)(res, 401, `email is empty please fill in the email`);
+                return res.status(401).json({ status: 'failed', error: 'Email required' });
             }
             else if (passWord == "") {
-                return (0, errorMessage_1.errorMessage)(res, 401, `password is empty please fill`);
+                return res.status(401).json({ status: 'failed', error: 'Password required' });
             }
             else {
                 next();
             }
+            return res.status(201).json({ status: 'success', });
         });
     }
     static EmailExist(req, res, next) {
@@ -35,11 +35,12 @@ class dataChecker {
             const { email } = req.body;
             const user = yield user_1.User.findOne({ email });
             if (user) {
-                return (0, errorMessage_1.errorMessage)(res, 404, `Email already exists`);
+                return res.status(401).json({ status: 'failed', error: 'Email already exist' });
             }
             else {
                 next();
             }
+            return res.status(201).json({ status: 'success', });
         });
     }
 }
