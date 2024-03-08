@@ -29,10 +29,8 @@ class userController {
                     return res.status(400).json({ status: 'fail', validationErrors });
                 }
                 const userName = yield user_1.User.findOne({ username });
-                return res.status(401).json({ status: 'failed', message: 'username already exist' });
-                return res.status(201).json({ status: 'Success', data: userName });
-                if (!userName) {
-                    return res.status(201).json({ status: 'Success', data: userName });
+                if (userName) {
+                    return res.status(401).json({ status: 'failed', message: 'username already exist', userName });
                 }
                 const user = yield user_1.User.create(userData);
                 return res.status(201).json({ status: 'Success', data: user });

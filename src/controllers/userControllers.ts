@@ -24,7 +24,6 @@ class userController{
           return res.status(401).json({ status:'failed', message : 'username already exist', userName});
         }
           const user: IUser = await User.create(userData);
-    
           return res.status(201).json({ status:'Success', data: user });
     
         } catch (error) {
