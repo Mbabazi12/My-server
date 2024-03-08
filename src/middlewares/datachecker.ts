@@ -21,7 +21,7 @@ class dataChecker{
         const { email } = req.body;
         const user = await User.findOne({ email });
         if (user) {
-            return errorMessage(res, 400, `Email already exists`);
+            return errorMessage(res, 404, `Email already exists`);
         } else {
             next();
         }

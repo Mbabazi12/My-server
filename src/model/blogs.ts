@@ -12,7 +12,11 @@ const blogsSchema = new mongoose.Schema({
   blogDescription: { type: String, required: true},
   blogImage: { type: String,required: true},
   CreatedDate: { type: Date, default: Date.now},
-  Likes: {type: Number, default: 0},
+  Likes: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Like",
+    default: 0
+    }],
   disLikes: [{type: mongoose.Schema.Types.ObjectId, ref: "USER"}]
 });
 const Blog: Model<IBlog> = mongoose.model<IBlog>("Blogs", blogsSchema);

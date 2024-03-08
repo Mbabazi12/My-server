@@ -4,12 +4,11 @@ import { dataChecker } from '../middlewares/datachecker';
 
 const router : Router = express.Router()
 
-router.post('/create', dataChecker.inputIsEmpty, dataChecker.EmailExist, userControllers.createUser);
-router.post('/login', userControllers.login);
+router.post('/create', dataChecker.inputIsEmpty, dataChecker.EmailExist, userControllers.signup);
+router.post('/login', userControllers.UserLogin);
 router.get('/get', userControllers.getAllUsers);
 router.get('/:id', userControllers.getUser);
 router.delete('/:id', userControllers.deleteUser);
-router.delete('/delete', userControllers.deleteAllUser);
 router.patch('/:id', userControllers.updateUser);
 
 export default router;

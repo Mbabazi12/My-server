@@ -12,31 +12,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_1 = require("../model/user");
 const successMessage_1 = require("../utils/successMessage");
 const errorMessage_1 = require("../utils/errorMessage");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = require("bcryptjs");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const loginMessage_1 = require("../utils/loginMessage");
+const user_1 = require("../model/user");
+const validation_1 = require("../middlewares/validation");
 class userController {
-    static createUser(req, res) {
+    static signup(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username, email, password, role } = req.body;
-            if (!password) {
-                return (0, errorMessage_1.errorMessage)(res, 400, 'Password is required');
+            try {
+                const { firstname, lastname, username, email, password, role } = req.body;
+                const userData = yield (0, validation_1.validateUser)({ firstname, lastname, username, email, password, role });
+                if ('validationErrors' in userData) {
+                    const { validationErrors } = userData;
+                    return res.status(400).json({ status: 'fail', validationErrors });
+                }
+                const user = yield user_1.User.create(userData);
+                return res.status(201).json({ status: 'Success', data: user });
             }
-            const hashPassword = bcrypt_1.default.hashSync(password, 10);
-            const user = yield user_1.User.create({ username, email, password: hashPassword, role });
-            if (user) {
-                return (0, successMessage_1.successMessage)(res, 200, 'User created', user);
+            catch (error) {
+                console.error('Error during signup:', error);
+                return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
             }
-            else {
-                return (0, errorMessage_1.errorMessage)(res, 404, 'Failed to create user');
-            }
-            ;
         });
     }
-    ;
     static getAllUsers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield user_1.User.find();
@@ -64,81 +64,68 @@ class userController {
     }
     static updateUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userId = req.params.id;
-            const user = yield user_1.User.findByIdAndUpdate(userId, req.body, { new: true });
-            if (user) {
-                return (0, successMessage_1.successMessage)(res, 200, 'user updated', user);
+            try {
+                const userId = req.params.userId;
+                const { username, email, password, role } = req.body;
+                const updatedUserData = yield (0, validation_1.validateupdatedUser)({ username, email, password, role });
+                if ('validationErrors' in updatedUserData) {
+                    const { validationErrors } = updatedUserData;
+                    return res.status(400).json({ status: "fail", validationErrors });
+                }
+                const updatedUser = yield user_1.User.findByIdAndUpdate(userId, updatedUserData, { new: true });
+                if (!updatedUser) {
+                    return res.status(404).json({ status: 'fail', error: 'User not found' });
+                }
+                return res.status(200).json({ status: 'Success', data: updatedUser });
             }
-            else {
-                return (0, errorMessage_1.errorMessage)(res, 401, 'user not updated');
+            catch (error) {
+                console.error('Error updating user:', error);
+                return res.status(500).json({ error: 'Internal Server Error' });
             }
-            ;
         });
     }
-    ;
     static deleteUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userId = req.params.id;
-            const user = yield user_1.User.findByIdAndDelete(userId);
-            if (user) {
-                return (0, successMessage_1.successMessage)(res, 200, 'user deleted successfully', user);
-            }
-            else {
-                return (0, errorMessage_1.errorMessage)(res, 401, 'user not deleted');
-            }
-            ;
-        });
-    }
-    ;
-    static deleteAllUser(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const user = yield user_1.User.deleteMany();
-            if (user) {
-                return (0, errorMessage_1.errorMessage)(res, 401, 'all users deleted');
-            }
-            else {
-                return (0, errorMessage_1.errorMessage)(res, 401, 'users not deleted');
-            }
-            ;
-        });
-    }
-    ;
-    static login(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = req.body;
-            const secretKey = 'mbabazi';
             try {
-                if (!secretKey) {
-                    return (0, errorMessage_1.errorMessage)(res, 404, 'secret key not defined');
+                const userId = req.params.userId;
+                const deletedUser = yield user_1.User.findByIdAndDelete(userId);
+                if (!deletedUser) {
+                    return res.status(404).json({ status: "fail", error: 'User not found' });
                 }
-                const user = yield user_1.User.findOne({ email });
-                if (!user) {
-                    return (0, errorMessage_1.errorMessage)(res, 401, 'Invalid email ');
+                return res.status(200).json({ status: 'Success', message: 'User successfully deleted' });
+            }
+            catch (error) {
+                console.error('Error deleting user and associated comments:', error);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+        });
+    }
+    static UserLogin(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email, password } = req.body;
+                const authUser = yield user_1.User.findOne({ email });
+                if (!authUser) {
+                    return res.status(404).json({ error: 'User not found' });
+                }
+                if (authUser.password) {
+                    const passwordMatch = yield (0, bcryptjs_1.compare)(password, authUser.password);
+                    if (!passwordMatch) {
+                        return res.status(401).json({ error: 'Incorrect password' });
+                    }
+                    const token = jsonwebtoken_1.default.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'mbabazi');
+                    return res.status(200).json({ status: "success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role: authUser.role }, token });
                 }
                 else {
-                    const comparePassword = bcrypt_1.default.compareSync(password, user.password);
-                    if (comparePassword) {
-                        return (0, successMessage_1.successMessage)(res, 402, 'invalid password', user);
-                    }
-                    else {
-                        const token = jsonwebtoken_1.default.sign({ user: user }, secretKey, { expiresIn: '300d' });
-                        if (token) {
-                            return (0, loginMessage_1.loginMessage)(res, 201, 'user login successfully', token);
-                        }
-                        else {
-                            return (0, errorMessage_1.errorMessage)(res, 401, 'token not found');
-                        }
-                    }
+                    return res.status(500).json({ status: "fail", error: 'User password not available' });
                 }
             }
             catch (error) {
-                console.log(error);
-                return (0, errorMessage_1.errorMessage)(res, 500, 'internal server error');
+                console.error('Error during user login:', error);
+                return res.status(500).json({ status: "error", error: 'Internal Server Error' });
             }
-            ;
         });
     }
-    ;
 }
 ;
 exports.default = userController;

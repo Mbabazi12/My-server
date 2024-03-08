@@ -20,12 +20,11 @@ app.get("/", (req, res) => {
     res.status(200).send({ message: "Welcome to our first API" });
 });
 // users endpoints
-app.post('/create', userControllers_1.default.createUser);
-app.post('/login', userControllers_1.default.login);
+app.post('/create', userControllers_1.default.signup);
+app.post('/login', userControllers_1.default.UserLogin);
 app.get('/', userControllers_1.default.getUser);
 app.get('/get', userControllers_1.default.getAllUsers);
 app.delete('/', userControllers_1.default.deleteUser);
-app.delete('/delete', userControllers_1.default.deleteAllUser);
 app.patch('/', userControllers_1.default.updateUser);
 // blogs endpoints
 app.post('/create', blogsControllers_1.default.createBlog);

@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const blogsControllers_1 = __importDefault(require("../controllers/blogsControllers"));
-const blogsMiddlewares_1 = __importDefault(require("../middlewares/blogsMiddlewares"));
+// import middleware from '../middlewares/blogsMiddlewares';
 const verifyAccess_1 = __importDefault(require("../middlewares/verifyAccess"));
 const router = express_1.default.Router();
-router.post('/create', blogsMiddlewares_1.default, verifyAccess_1.default, blogsControllers_1.default.createBlog);
+router.post('/create', (0, verifyAccess_1.default)('admin'), blogsControllers_1.default.createBlog);
 router.get('/get', blogsControllers_1.default.getAllBlogs);
 router.get('/:id', blogsControllers_1.default.getBlog);
 router.delete('/:id', (0, verifyAccess_1.default)("admin"), blogsControllers_1.default.deleteBlog);

@@ -36,12 +36,13 @@ function server() {
         app.listen(port, () => {
             console.log(`Server listening on port ${port}`);
         });
-        // const brand = 'mongodb+srv://mbabazi069:mbabazi@mbabazi.l7tt475.mongodb.net/?retryWrites=true&w=majority&appName=mbabazi'
-        const brand = 'mongodb://localhost:27017/my_brand';
-        yield mongoose_1.default.connect(brand).then(() => {
-            console.log('database connected successfully');
-        }).catch((error) => {
-            console.log(`database connection failed${error}`);
+        mongoose_1.default.set('strictQuery', true);
+        //    mongoose.connect("mongodb+srv://mbabazi069:mbabazi@cluster0.wnkbwfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+        mongoose_1.default.connect("mongodb://localhost:27017/")
+            .then(() => {
+            console.log('connected to the database');
+        }).catch((err) => {
+            console.log('error', err);
         });
     });
 }

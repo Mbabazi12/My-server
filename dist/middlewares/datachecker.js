@@ -35,7 +35,7 @@ class dataChecker {
             const { email } = req.body;
             const user = yield user_1.User.findOne({ email });
             if (user) {
-                return (0, errorMessage_1.errorMessage)(res, 400, `Email already exists`);
+                return (0, errorMessage_1.errorMessage)(res, 404, `Email already exists`);
             }
             else {
                 next();

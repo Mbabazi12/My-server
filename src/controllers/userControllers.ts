@@ -1,25 +1,35 @@
 import { Request, Response } from 'express';
-import  {User}  from '../model/user';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
-import bcrypt from 'bcrypt';
+import { compare } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { loginMessage } from '../utils/loginMessage';
+import { User, IUser } from '../model/user';
+import { validateUser,validateupdatedUser } from '../middlewares/validation';
+
 
 class userController{
-    public static async createUser(req: Request, res: Response): Promise<void> {
-        const { username, email, password, role } = req.body;
-        if (!password) {
-            return errorMessage(res, 400, 'Password is required');
+    public static async signup(req: Request, res: Response): Promise<Response> {
+        try {
+          const { firstname, lastname, username, email, password,role} = req.body;
+         
+          const userData = await validateUser({ firstname, lastname, username, email, password,role});
+    
+          if ('validationErrors' in userData) {
+            const { validationErrors } = userData;
+            return res.status(400).json({ status:'fail', validationErrors });
+          }
+          
+    
+          const user: IUser = await User.create(userData);
+    
+          return res.status(201).json({ status:'Success', data: user });
+    
+        } catch (error) {
+          console.error('Error during signup:', error);
+          return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
+    
         }
-        const hashPassword = bcrypt.hashSync(password, 10);
-        const user = await User.create({ username, email, password: hashPassword, role });
-        if (user) {
-            return successMessage(res, 200, 'User created', user);
-        }else {
-            return errorMessage(res, 404, 'Failed to create user');
-        };
-    };
+      }
 
     public static async  getAllUsers(req:Request, res:Response):Promise<void>{
         const user = await User.find();
@@ -39,62 +49,75 @@ class userController{
         }
     }
 
-    public static async  updateUser(req:Request, res:Response):Promise<void>{
-        const userId = req.params.id;
-        const user = await User.findByIdAndUpdate(userId, req.body, {new: true});
-        if (user){
-            return successMessage(res, 200, 'user updated', user);
-        }else{
-            return errorMessage(res, 401, 'user not updated');
-        };
-    };
-
-    public static async  deleteUser(req:Request, res:Response):Promise<void>{
-        const userId = req.params.id;
-        const user = await User.findByIdAndDelete(userId);
-        if (user){
-            return successMessage(res, 200, 'user deleted successfully', user);
-        }else{
-            return errorMessage(res, 401, 'user not deleted');
-        };
-    };
-
-    public static async  deleteAllUser(req:Request, res:Response):Promise<void>{
-        const user = await User.deleteMany()
-        if (user){
-            return errorMessage(res, 401, 'all users deleted');
-        }else{
-            return errorMessage(res, 401, 'users not deleted');
-        };
-    };
-
-    public static async login(req: Request, res: Response): Promise<void> {
-        const { email, password } = req.body;
-        const secretKey = 'mbabazi';
+    public static async updateUser(req: Request, res: Response): Promise<Response> {
         try {
-            if(!secretKey){
-                return errorMessage(res, 404, 'secret key not defined');
+          const userId: string = req.params.userId;
+          const {username, email, password ,role} = req.body;
+    
+          const updatedUserData = await validateupdatedUser({ username, email, password,role });
+    
+          if ('validationErrors' in updatedUserData) {
+            const { validationErrors } = updatedUserData;
+            return res.status(400).json({ status:"fail", validationErrors });
+          }
+    
+                const updatedUser: IUser | null = await User.findByIdAndUpdate(userId, updatedUserData, { new: true });
+    
+          if (!updatedUser) {
+            return res.status(404).json({status:'fail', error: 'User not found' });
+          }
+    
+          return res.status(200).json({status:'Success', data: updatedUser});
+        } catch (error) {
+          console.error('Error updating user:', error);
+          return res.status(500).json({ error: 'Internal Server Error' });
+        }
+      }
+
+    public static async deleteUser(req: Request, res: Response): Promise<Response> {
+        try {
+          const userId: string = req.params.userId;
+          const deletedUser: IUser | null = await User.findByIdAndDelete(userId);
+          if (!deletedUser) {
+            return res.status(404).json({ status: "fail", error: 'User not found' });
+          }
+          return res.status(200).json({ status: 'Success', message: 'User successfully deleted' });
+    
+        } catch (error) {
+          console.error('Error deleting user and associated comments:', error);
+          return res.status(500).json({ error: 'Internal Server Error' });
+        }
+      }
+
+    public static async UserLogin(req: Request, res: Response): Promise<Response> {
+        try {
+          const { email, password } = req.body;
+          const authUser: IUser | null = await User.findOne({ email });
+    
+          if (!authUser) {
+            return res.status(404).json({ error: 'User not found' });
+          }
+    
+          if (authUser.password) {
+            const passwordMatch = await compare(password, authUser.password);
+    
+            if (!passwordMatch) {
+              return res.status(401).json({ error: 'Incorrect password' });
             }
-            const user = await User.findOne({email});
-            if(!user){
-                return errorMessage(res, 401, 'Invalid email ');
-            }else{
-                const comparePassword = bcrypt.compareSync(password, user.password);
-                if(comparePassword){
-                    return successMessage(res, 402, 'invalid password', user);
-                }else{
-                    const token = jwt.sign({user: user}, secretKey, {expiresIn: '300d'})
-                    if(token){
-                        return loginMessage(res, 201, 'user login successfully', token)
-                    }else{
-                        return errorMessage(res, 401, 'token not found');
-                    }
-                }
-            }
-        }catch (error) {
-            console.log(error);
-            return errorMessage(res, 500, 'internal server error'); 
-        };
-    };
+    
+            const token = jwt.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'mbabazi');
+    
+    
+            return res.status(200).json({ status:"success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role:authUser.role}, token });
+          }
+          else {
+              return res.status(500).json({ status:"fail", error: 'User password not available' });
+          }
+      }
+      catch (error) {
+          console.error('Error during user login:', error);
+          return res.status(500).json({ status:"error", error: 'Internal Server Error' });
+      }
+      }
 };
 export default userController;
