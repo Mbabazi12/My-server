@@ -10,21 +10,21 @@ import swaggerOutPut from './documentation/swagger_output.json';
 
 
 const app = express();
-// const corsOpts = {
-//     origin: '*',
-//     methods: [
-//     'GET',
-//     'POST',
-//     'DELETE',
-//     'PATCH',
-//     'PUT'
-//     ],
-//     allowedHeaders: [
-//     'Content-Type',
-//     'Authorization',
-//     ],
-//     };
-// app.use(cors(corsOpts));
+const corsOpts = {
+    origin: '*',
+    methods: [
+    'GET',
+    'POST',
+    'DELETE',
+    'PATCH',
+    'PUT'
+    ],
+    allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    ],
+    };
+app.use(cors(corsOpts));
 
 app.use(compression());
 app.use(cookieParser());
