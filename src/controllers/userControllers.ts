@@ -113,7 +113,7 @@ class userController{
             return res.status(200).json({ status:"success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role:authUser.role}, token });
           }
           else {
-              return res.status(500).json({ status:"fail", error: 'User password not available' });
+              return res.status(400).json({ status:"fail", error: 'User password not available' });
           }
       }
       catch (error) {
