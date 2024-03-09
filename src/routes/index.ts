@@ -2,7 +2,7 @@ import express, {Router} from 'express';
 import userRoutes from './userRoutes';
 import blogsRoutes from './blogsRoutes';
 import commentsRoutes from './commentsRoutes';
-import contactRoutes from './contactRoutes';
+import messageRoutes from './messageRoutes';
 
 const router:Router = express.Router()
 
@@ -24,11 +24,11 @@ router.use('/comment',
 */
 commentsRoutes);
 
-router.use('/contact',
+router.use('/message',
 /*
 #swagger.tags = ['MESSAGES Routes']
 */
-contactRoutes);
+messageRoutes);
 
 
 export default router;

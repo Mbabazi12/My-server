@@ -41,6 +41,18 @@ app.use((0, compression_1.default)());
 app.use((0, cookie_parser_1.default)());
 app.use(body_parser_1.default.json());
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_output_json_1.default));
+// let messages: IMessage[] = await Message.find({});
+// 	let comments: IComment[] = await Comment.find({});
+// 	let blogs: IBlog[] = await Blog.find({});
+// 	let details = {
+// 		"blogs": blogs.length,
+// 		"comments": comments.length,
+// 		"messages": messages.length
+// 	}
+// 	res.status(200).json({
+// 		status: "success",
+// 		message: details
+// 	});
 const port = process.env.PORT || 8080;
 app.use(express_1.default.json());
 app.use('/API/v1', Index_1.default);

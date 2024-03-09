@@ -30,6 +30,18 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutPut));
+// let messages: IMessage[] = await Message.find({});
+// 	let comments: IComment[] = await Comment.find({});
+// 	let blogs: IBlog[] = await Blog.find({});
+// 	let details = {
+// 		"blogs": blogs.length,
+// 		"comments": comments.length,
+// 		"messages": messages.length
+// 	}
+// 	res.status(200).json({
+// 		status: "success",
+// 		message: details
+// 	});
 
 const port = process.env.PORT || 8080;
 app.use(express.json());

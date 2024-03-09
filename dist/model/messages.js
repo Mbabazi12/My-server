@@ -18,5 +18,5 @@ const contactSchema = new mongoose_1.default.Schema({
         default: Date.now()
     },
 });
-const Contact = mongoose_1.default.model("Contact", contactSchema);
-exports.default = Contact;
+const Messages = mongoose_1.default.model("Contact", contactSchema);
+exports.default = Messages;

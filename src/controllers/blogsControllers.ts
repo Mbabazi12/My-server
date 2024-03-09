@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { Blog } from '../model/blogs';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
+import fileUpload, {UploadedFile} from 'express-fileupload';
+
 
 class blogController{
     public static async  createBlog(req:Request, res:Response):Promise<void>{

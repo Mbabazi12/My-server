@@ -1,9 +1,5 @@
 import mongoose from "mongoose";
 const contactSchema = new mongoose.Schema({
-    fullName : {
-        type:String,
-        required:true
-    },
     email : {
         type:String,
         required:true
@@ -17,8 +13,8 @@ const contactSchema = new mongoose.Schema({
        default : Date.now()
     },
 })
-const Contact = mongoose.model("Contact",contactSchema);
-export{ Contact };
+const Messages = mongoose.model("Contact",contactSchema);
+export default Messages ;
 
 
 

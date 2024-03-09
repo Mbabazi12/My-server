@@ -30,18 +30,6 @@ class commentController {
             }
         });
     }
-    static deleteMessages(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const messageId = req.params.id;
-            const comment = yield comments_1.Comment.findByIdAndDelete(messageId);
-            if (comment) {
-                return (0, sucess_1.success)(res, 201, `messages deleted`, comment);
-            }
-            else {
-                return (0, errorMessage_1.errorMessage)(res, 401, `messages not deleted`);
-            }
-        });
-    }
     static deleteComment(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const comment = yield comments_1.Comment.deleteMany();

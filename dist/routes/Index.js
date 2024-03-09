@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const userRoutes_1 = __importDefault(require("./userRoutes"));
 const blogsRoutes_1 = __importDefault(require("./blogsRoutes"));
 const commentsRoutes_1 = __importDefault(require("./commentsRoutes"));
-const contactRoutes_1 = __importDefault(require("./contactRoutes"));
+const messageRoutes_1 = __importDefault(require("./messageRoutes"));
 const router = express_1.default.Router();
 router.use('/user', 
 /*
@@ -24,11 +24,11 @@ router.use('/comment',
 #swagger.tags = ['COMMENTS Routes']
 */
 commentsRoutes_1.default);
-router.use('/contact', 
+router.use('/message', 
 /*
 #swagger.tags = ['MESSAGES Routes']
 */
-contactRoutes_1.default);
+messageRoutes_1.default);
 exports.default = router;
 // import authentication from './authentication';
 // // import users from './users';

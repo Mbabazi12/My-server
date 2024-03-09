@@ -8,23 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const contact_1 = require("../model/contact");
+const contact_1 = __importDefault(require("../model/contact"));
 const sucess_1 = require("../utils/sucess");
 const successMessage_1 = require("../utils/successMessage");
 const errorMessage_1 = require("../utils/errorMessage");
 class contactController {
     static addmessage(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const message = yield contact_1.Contact.create(req.body);
+            const message = yield contact_1.default.create(req.body);
             if (message) {
                 return (0, successMessage_1.successMessage)(res, 200, `message added`, message);
             }
         });
     }
-    static getAllMessages(req, res) {
+    static getAllMessages(res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const message = yield contact_1.Contact.find();
+            const message = yield contact_1.default.find();
             if (message) {
                 return (0, sucess_1.success)(res, 200, `messages found`, message);
             }
@@ -33,7 +36,7 @@ class contactController {
     static deleteMessages(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const messageId = req.params.id;
-            const message = yield contact_1.Contact.findByIdAndDelete(messageId);
+            const message = yield contact_1.default.findByIdAndDelete(messageId);
             if (message) {
                 return (0, sucess_1.success)(res, 201, `messages deleted`, message);
             }
@@ -44,7 +47,7 @@ class contactController {
     }
     static deleteAllMessages(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const message = yield contact_1.Contact.deleteMany();
+            const message = yield contact_1.default.deleteMany();
             if (message) {
                 return (0, successMessage_1.successMessage)(res, 201, `messages deleted`, message);
             }
