@@ -427,7 +427,7 @@
                 }
             }
         },
-        "/API/v1/contact/addMessage": {
+        "/API/v1/message/addMessage": {
             "post": {
                 "tags": [
                     "MESSAGES Routes"
@@ -437,10 +437,27 @@
                     "default": {
                         "description": ""
                     }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "example": "any"
+                                    },
+                                    "message": {
+                                        "example": "any"
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
-        "/API/v1/contact/getMessages": {
+        "/API/v1/message/getMessages": {
             "get": {
                 "tags": [
                     "MESSAGES Routes"
@@ -453,7 +470,7 @@
                 }
             }
         },
-        "/API/v1/contact/{id}": {
+        "/API/v1/message/{id}": {
             "get": {
                 "tags": [
                     "MESSAGES Routes"
@@ -474,14 +491,43 @@
                         "description": ""
                     }
                 }
-            }
-        },
-        "/API/v1/contact/deleteAll": {
-            "get": {
+            },
+            "delete": {
                 "tags": [
                     "MESSAGES Routes"
                 ],
                 "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MESSAGES Routes"
+                ],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "default": {
                         "description": ""
