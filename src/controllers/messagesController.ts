@@ -10,7 +10,7 @@ class messageController{
             if(messages){
                 return successMessage(res,200,`message sent successfully`,messages)
             }else{
-                return errorMessage(res,204,`no blog posted`)
+                return errorMessage(res,401,`message not sent`)
             }
         } catch (error) {
             console.error("Error deleting user:", error);
@@ -23,7 +23,7 @@ class messageController{
             if(message){
                 return successMessage(res,200,`all message retrived`,message)
             }else{
-                return errorMessage(res,200,`no blogs retrived`)
+                return errorMessage(res,404,`no messages retrived`)
             }
         } catch (error) {
         }
@@ -35,7 +35,7 @@ class messageController{
             if(message){
                 return successMessage(res,200,`message retrived`,message)
             }else{
-                return errorMessage(res,200,`no message retrived`)
+                return errorMessage(res,404,`no message found`)
             }
         } catch (error) {
         }

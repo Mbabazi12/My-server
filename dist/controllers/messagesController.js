@@ -26,7 +26,7 @@ class messageController {
                     return (0, successMessage_1.successMessage)(res, 200, `message sent successfully`, messages);
                 }
                 else {
-                    return (0, errorMessage_1.errorMessage)(res, 204, `no blog posted`);
+                    return (0, errorMessage_1.errorMessage)(res, 401, `message not sent`);
                 }
             }
             catch (error) {
@@ -43,7 +43,7 @@ class messageController {
                     return (0, successMessage_1.successMessage)(res, 200, `all message retrived`, message);
                 }
                 else {
-                    return (0, errorMessage_1.errorMessage)(res, 200, `no blogs retrived`);
+                    return (0, errorMessage_1.errorMessage)(res, 404, `no messages retrived`);
                 }
             }
             catch (error) {
@@ -59,7 +59,7 @@ class messageController {
                     return (0, successMessage_1.successMessage)(res, 200, `message retrived`, message);
                 }
                 else {
-                    return (0, errorMessage_1.errorMessage)(res, 200, `no message retrived`);
+                    return (0, errorMessage_1.errorMessage)(res, 404, `no message found`);
                 }
             }
             catch (error) {
