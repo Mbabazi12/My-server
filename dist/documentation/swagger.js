@@ -12,7 +12,8 @@ const doc = {
     },
     servers: [
         {
-            url: 'http://localhost:8080',
+            url: 'https://my-server-vfg8.onrender.com',
+            // url: 'http://localhost:8080',
             description: ''
         },
     ],
