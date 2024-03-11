@@ -512,27 +512,6 @@
             "description": ""
           }
         }
-      },
-      "put": {
-        "tags": [
-          "MESSAGES Routes"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
       }
     }
   },
