@@ -29,7 +29,7 @@ const validateUser = (userData) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         if (error instanceof zod_1.ZodError) {
-            console.error('Validation failed:', error.errors);
+            // console.error('Validation failed:', error.errors);
             const errorMessages = {};
             error.errors.forEach((validationError) => {
                 const fieldName = validationError.path[0];

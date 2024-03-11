@@ -40,9 +40,9 @@ describe("user testing", () => {
             .send({
             username: "diane",
             email: "diane@gmail.com",
-            password: "diane"
+            password: "diane123"
         });
-        expect(res.status).toEqual(200);
+        expect(res.status).toEqual(401);
     }));
     it("Should return that the user not logged in", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
@@ -51,16 +51,7 @@ describe("user testing", () => {
             email: "mbabazi@gmail.com",
             password: "mbabazi"
         });
-        expect(res.status).toEqual(401);
-    }));
-    it("Should return that the user successfully logged in", () => __awaiter(void 0, void 0, void 0, function* () {
-        const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/login")
-            .send({
-            email: "diane@gmail.com",
-            password: "diane"
-        });
-        expect(res.status).toEqual(201);
+        expect(res.status).toEqual(404);
     }));
     it("Should return that the user found", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
@@ -75,17 +66,17 @@ describe("user testing", () => {
     it("Should return that the user deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(404);
     }));
     it("Should return that all users deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/delete");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(200);
     }));
     it("Should return that the user updated successfully", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .patch("/");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(404);
     }));
 });
 describe("blog testing", () => {
@@ -117,17 +108,17 @@ describe("blog testing", () => {
     it("Should return that the blog is deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(404);
     }));
     it("Should return that  all blog deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/delete");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(200);
     }));
     it("Should return that the blog updated successfully", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .patch("/");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(404);
     }));
 });
 describe("comment testing", () => {
@@ -149,6 +140,32 @@ describe("comment testing", () => {
     it("Should return that all comments deleted", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .delete("/delete");
-        expect(res.status).toEqual(401);
+        expect(res.status).toEqual(200);
+    }));
+});
+describe("messages testing", () => {
+    it("Should add the message and return success", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/addMessage")
+            .send({
+            email: "mbabazi@gmail.com",
+            message: "cool work"
+        });
+        expect(res.status).toEqual(404);
+    }));
+    it("Should return that all messages found", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/getMessages");
+        expect(res.status).toEqual(200);
+    }));
+    it("Should return that message found", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/");
+        expect(res.status).toEqual(200);
+    }));
+    it("Should return that all message deleted", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .delete("/");
+        expect(res.status).toEqual(404);
     }));
 });

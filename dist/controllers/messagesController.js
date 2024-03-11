@@ -82,21 +82,5 @@ class messageController {
             }
         });
     }
-    static updateMessage(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const messageId = req.params.id;
-            try {
-                const message = yield messages_1.default.findByIdAndUpdate(messageId, req.body, { new: true });
-                if (message) {
-                    return (0, successMessage_1.successMessage)(res, 200, `message updated successfully`, message);
-                }
-                else {
-                    return (0, errorMessage_1.errorMessage)(res, 400, `no message updated`);
-                }
-            }
-            catch (error) {
-            }
-        });
-    }
 }
 exports.messageController = messageController;

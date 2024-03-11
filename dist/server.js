@@ -11,6 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 const userControllers_1 = __importDefault(require("./controllers/userControllers"));
 const blogsControllers_1 = __importDefault(require("./controllers/blogsControllers"));
 const commentController_1 = __importDefault(require("./controllers/commentController"));
+const messagesController_1 = require("./controllers/messagesController");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use((0, compression_1.default)());
@@ -37,4 +38,9 @@ app.patch('/', blogsControllers_1.default.updateBlog);
 app.post('/addComment', commentController_1.default.addComment);
 app.get('/getComment', commentController_1.default.Comments);
 app.delete('/delete', commentController_1.default.deleteComment);
+// messages endpoints
+app.post('addMessage', messagesController_1.messageController.postMessage);
+app.get('/getMessages', messagesController_1.messageController.getAllMessage);
+app.get('/', messagesController_1.messageController.getOneMessage);
+app.delete('/', messagesController_1.messageController.deleteOneMessage);
 exports.default = app;

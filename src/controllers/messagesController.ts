@@ -52,17 +52,5 @@ class messageController{
         } catch (error) {
         }
     }
-    public static async updateMessage(req:Request,res:Response):Promise<void>{
-        const messageId = req.params.id
-        try {
-            const message = await Messages.findByIdAndUpdate(messageId,req.body,{new:true})
-            if(message){
-                return successMessage(res,200,`message updated successfully`,message)
-            }else{
-                return errorMessage(res,400,`no message updated`)
-            }
-        } catch (error) {
-        }
-    }
 }
 export {messageController}

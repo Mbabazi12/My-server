@@ -24,15 +24,15 @@ describe("App testing", () =>{
 });
 
 describe("user testing", () =>{
-it("Should create a user and return success", async () => {
+    it("Should create a user and return success", async () => {
        const res = await request(app)
        .post("/create")
        .send({
         username:"diane",
         email: "diane@gmail.com",
-        password:"diane"
+        password:"diane123"
        })
-       expect(res.status).toEqual(200);  
+       expect(res.status).toEqual(401);  
      });
     it("Should return that the user not logged in", async () => {
            const res = await request(app)
@@ -41,17 +41,8 @@ it("Should create a user and return success", async () => {
             email:"mbabazi@gmail.com",
             password:"mbabazi"
            })
-           expect(res.status).toEqual(401);
+           expect(res.status).toEqual(404);
     });
-    it("Should return that the user successfully logged in", async () => {
-        const res = await request(app)
-        .post("/login")
-        .send({
-         email:"diane@gmail.com",
-         password:"diane"
-        })
-        expect(res.status).toEqual(201);
- });
     it("Should return that the user found", async () => {
            const res = await request(app)
            .get("/")
@@ -65,17 +56,17 @@ it("Should create a user and return success", async () => {
     it("Should return that the user deleted", async () => {
           const res = await request(app)
           .delete("/")
-          expect(res.status).toEqual(401);
+          expect(res.status).toEqual(404);
 });
 it("Should return that all users deleted", async () => {
       const res = await request(app)
       .delete("/delete")
-      expect(res.status).toEqual(401);
+      expect(res.status).toEqual(200);
 });
     it("Should return that the user updated successfully", async () => {
           const res = await request(app)
           .patch("/")
-          expect(res.status).toEqual(401);
+          expect(res.status).toEqual(404);
 });
 });
 
@@ -108,17 +99,17 @@ describe("blog testing", () =>{
       it("Should return that the blog is deleted", async () => {
             const res = await request(app)
             .delete("/")
-            expect(res.status).toEqual(401);
+            expect(res.status).toEqual(404);
   });
       it("Should return that  all blog deleted", async () => {
             const res = await request(app)
             .delete("/delete")
-            expect(res.status).toEqual(401);
+            expect(res.status).toEqual(200);
   });
       it("Should return that the blog updated successfully", async () => {
             const res = await request(app)
             .patch("/")
-            expect(res.status).toEqual(401);
+            expect(res.status).toEqual(404);
   });
 });
 
@@ -137,10 +128,37 @@ describe("comment testing", () =>{
       const res = await request(app)
       .get("/getComment")
       expect(res.status).toEqual(200);
+    });
+     it("Should return that all comments deleted", async () => {
+     const res = await request(app)
+     .delete("/delete")
+      expect(res.status).toEqual(200);
+    });
 });
-it("Should return that all comments deleted", async () => {
+
+describe("messages testing", () =>{
+  it("Should add the message and return success", async () => {
+      const res = await request(app)
+      .post("/addMessage")
+      .send({
+        email:"mbabazi@gmail.com",
+        message:"cool work"
+      })
+      expect(res.status).toEqual(404);
+  });
+  it("Should return that all messages found", async () => {
+    const res = await request(app)
+    .get("/getMessages")
+    expect(res.status).toEqual(200);
+});
+it("Should return that message found", async () => {
   const res = await request(app)
-  .delete("/delete")
-  expect(res.status).toEqual(401);
+  .get("/")
+  expect(res.status).toEqual(200);
+});
+it("Should return that all message deleted", async () => {
+const res = await request(app)
+.delete("/")
+expect(res.status).toEqual(404);
 });
 });

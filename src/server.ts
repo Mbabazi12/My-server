@@ -6,6 +6,7 @@ import cors from "cors";
 import userController from "./controllers/userControllers";
 import blogController from "./controllers/blogsControllers";
 import commentController from "./controllers/commentController";
+import { messageController } from "./controllers/messagesController";
 
 
 const app = express();
@@ -36,4 +37,9 @@ app.patch('/', blogController.updateBlog);
 app.post('/addComment', commentController.addComment);
 app.get('/getComment', commentController.Comments);
 app.delete('/delete', commentController.deleteComment);
+// messages endpoints
+app.post('addMessage', messageController.postMessage);
+app.get('/getMessages', messageController.getAllMessage);
+app.get('/', messageController.getOneMessage);
+app.delete('/', messageController.deleteOneMessage);
 export default app;

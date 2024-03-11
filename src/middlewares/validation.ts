@@ -23,7 +23,7 @@ const validateUser = async (userData: any): Promise<ValidatedUser | { validation
     }
     catch (error) {
       if (error instanceof ZodError) {
-        console.error('Validation failed:', error.errors);
+        // console.error('Validation failed:', error.errors);
   
         const errorMessages: Record<string, string> = {};
         error.errors.forEach((validationError) => {

@@ -10,5 +10,4 @@ router.post("/addMessage", messagesController_1.messageController.postMessage);
 router.get("/getMessages", messagesController_1.messageController.getAllMessage);
 router.get("/:id", messagesController_1.messageController.getOneMessage);
 router.delete("/:id", messagesController_1.messageController.deleteOneMessage);
-router.put("/:id", messagesController_1.messageController.updateMessage);
 exports.default = router;
